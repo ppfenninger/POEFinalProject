@@ -13,14 +13,17 @@ int sensor2Pin = A1;
 int sensor3Pin = A2;
 int sensor1Value = 0;
 int sensor2Value = 0;
-int sensor3Value = 0; 
-int averageValues = 0;
-int averageDistance = 50;  
+int sensor3Value = 0;   
 uint8_t baseSpeed = 20;
 boolean isClockwise = true;  
-int high = 1; 
-int lastHigh = 1; 
-
+int sensVals[3] = {0, 0, 0};
+int threshold = 200; 
+//int clockwise1[3] = {1, 2, 4};
+//int clockwise2[3] = {2, 4, 1};
+//int clockwise3[3] = {4, 1, 2};
+//int counterclockwise1[3] =  {1, 4, 2};
+//int counterclockwise2[3] =  {2, 1, 4};
+//int counterclockwise3[3] =  {4, 2, 1};
 
 void setup() {
   // put your setup code here, to run once:
@@ -36,35 +39,60 @@ void loop() {
   sensor1Value = analogRead(sensor1Pin);
   sensor2Value = analogRead(sensor2Pin); 
   sensor3Value = analogRead(sensor3Pin);
+
+  {if ((sensor1Value > threshold) && sensVals[0] == 0) {
+     sensVals[0] = sensVals[0] + sensVals[1] + sensVals[2] + 1;
+  }}
+  {if ((sensor2Value > threshold) && sensVals[1] == 0) {
+     sensVals[1] = sensVals[0] + sensVals[1] + sensVals[2] + 1; 
+  }}
+  {if ((sensor3Value > threshold) && sensVals[2] == 0) {
+     sensVals[2] = sensVals[0] + sensVals[1] + sensVals[2] + 1; 
+  }}
   
-  averageValue = (sensor1Value + sensor2Value + sensor3Value) /4; 
-
-  {if (sensor1Value > averageValue + averageDistance) {
-     high = 1; 
-  }
-  else if (sensor2Value > averageValue + averageDistance) {
-     high = 2;
-  }
-  else if (sensor3Value > averageValue + averageDistance) {
-     high = 3;
-  }}
-
-
-  {if (lastHigh != high) {
-    if (lastHigh < high) {
-      isClockwise = true;
+  Serial.print(sensVals[0]); 
+  Serial.print(','); 
+  Serial.print(sensVals[1]); 
+  Serial.print(',');
+  Serial.println(sensVals[2]); 
+  
+  {if (sensVals[0] + sensVals[1] + sensVals[2] == 7) {
+    if (sensVals[0] == 1) {
+      if (sensVals[1] == 2) {
+        isClockwise = true;
+      }
+      else {
+        isClockwise = false;
+      }
     }
-    else {
-      isClockwise = false; 
+    else if (sensVals[0] == 2) {
+      if (sensVals[1] == 4) {
+        isClockwise = true;
+      }
+      else {
+        isClockwise = false;
+      } 
     }
+    else if (sensVals[0] == 4) {
+      if (sensVals[1] == 1) {
+        isClockwise = true;
+      }
+      else {
+        isClockwise = false; 
+      }
+    }
+    sensVals[0] = 0;
+    sensVals[1] = 0; 
+    sensVals[2] = 0; 
   }}
+  
 
   {if (isClockwise) {
     myMotor->run(FORWARD); 
   }
   else {
     myMotor->run(BACKWARD); 
-  }}
-  lastHigh = high; 
+  }}  
+  delay(1000);
 }
 
