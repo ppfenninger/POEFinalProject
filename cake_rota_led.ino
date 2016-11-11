@@ -110,7 +110,7 @@ void loop() {
   enc2 = digitalRead(enc2Pin);
   enc3 = digitalRead(enc3Pin);
   enc4 = digitalRead(enc4Pin);
-  encoderValue = 1 * enc1 + 2 * enc2 + 4 * enc3 + 8 * enc4;
+  encoderValue = 8 * enc1 + 4 * enc2 + 2 * enc3 + 1 * enc4;
 
   sensor1Value = analogRead(sensor1Pin);
   sensor2Value = analogRead(sensor2Pin);
@@ -255,3 +255,5 @@ void loop() {
   }
   delay(1000);
 }
+
+
