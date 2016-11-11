@@ -3,10 +3,11 @@
 //start LED initialization
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
-  #include <avr/power.h>
+#include <avr/power.h>
 #endif
 
-#define PIN 6
+int animalpin = 6;
+int cakepin = 7;
 int theChosenOne; //random number: the chosen animal!
 int runOnce = 0; //int to make the rng run once
 
@@ -18,7 +19,8 @@ int runOnce = 0; //int to make the rng run once
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 //   NEO_RGBW    Pixels are wired for RGBW bitstream (NeoPixel RGBW products)
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel animalstrip = Adafruit_NeoPixel(12, animalpin, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel cakestrip = Adafruit_NeoPixel(3, cakepin, NEO_GRB + NEO_KHZ800);
 
 // IMPORTANT: To reduce NeoPixel burnout risk, add 1000 uF capacitor across
 // pixel power leads, add 300 - 500 Ohm resistor on first pixel's data input
@@ -55,9 +57,9 @@ int sensVals[3] = {0, 0, 0};
 int threshold = 145;          //activation threshold for sensors
 
 //pins and values for LEDs
-int led0 = 13;
-int led1 = 12;
-int led2 = 11;
+//int led0 = 13;
+//int led1 = 12;
+//int led2 = 11;
 int sensor1Value = 0;
 int sensor2Value = 0;
 int sensor3Value = 0;
@@ -76,34 +78,34 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
   AFMS.begin();
-  pinMode(led0, OUTPUT);
-  pinMode(led1, OUTPUT);
-  pinMode(led2, OUTPUT);
-  cakeMotor->setSpeed(baseSpeed);
+  //  pinMode(led0, OUTPUT);
+  //  pinMode(led1, OUTPUT);
+  //  pinMode(led2, OUTPUT);
+  cakeMotor->setSpeed(CSpeed);
   cakeMotor->run(FORWARD);
   cakeMotor->run(RELEASE);
-  rotaryMotor->setSpeed(baseRotarySpeed);
+  rotaryMotor->setSpeed(RSpeed);
 }
 
 
-void funColor(int led){
+void funColor(int led) {
   //what a fun color!
-  
-  strip.setPixelColor(led, strip.Color(13, 6, 0));
-  strip.show();
+
+  animalstrip.setPixelColor(led, animalstrip.Color(13, 6, 0));
+  animalstrip.show();
 }
 
 void loop() {
 
-`//random number generator: generates randint theChosenOne
-  if (runOnce == 0){
+  //random number generator: generates randint theChosenOne
+  if (runOnce == 0) {
     theChosenOne = random(11);
     runOnce++;
   }
 
   funColor(theChosenOne);
 
-  
+
   enc1 = digitalRead(enc1Pin);
   enc2 = digitalRead(enc2Pin);
   enc3 = digitalRead(enc3Pin);
@@ -171,48 +173,58 @@ void loop() {
   //Serial.print(',');
   //Serial.println(sensVals[2]);
 
-{ if (sensVals[0] + sensVals[1] + sensVals[2] == 7) {
-      if (sensVals[0] == 1) {
-        if (sensVals[1] == 2) {
-          isClockwise = true;
-        }
-        else {
-          isClockwise = false;
-        }
+  if (sensVals[0] + sensVals[1] + sensVals[2] == 7) {
+    if (sensVals[0] == 1) {
+      if (sensVals[1] == 2) {
+        isClockwise = true;
       }
-      else if (sensVals[0] == 2) {
-        if (sensVals[1] == 4) {
-          isClockwise = true;
-        }
-        else {
-          isClockwise = false;
-        }
+      else {
+        isClockwise = false;
       }
-      else if (sensVals[0] == 4) {
-        if (sensVals[1] == 1) {
-          isClockwise = true;
-        }
-        else {
-          isClockwise = false;
-        }
-      }
-      sensVals[0] = 0;
-      sensVals[1] = 0;
-      sensVals[2] = 0;
-      lastWalk = millis();
-      cakeMotor->setSpeed(CSpeed);
     }
+    else if (sensVals[0] == 2) {
+      if (sensVals[1] == 4) {
+        isClockwise = true;
+      }
+      else {
+        isClockwise = false;
+      }
+    }
+    else if (sensVals[0] == 4) {
+      if (sensVals[1] == 1) {
+        isClockwise = true;
+      }
+      else {
+        isClockwise = false;
+      }
+    }
+    sensVals[0] = 0;
+    sensVals[1] = 0;
+    sensVals[2] = 0;
+    lastWalk = millis();
+    cakeMotor->setSpeed(CSpeed);
   }
 
-  digitalWrite(led0, sensVals[0]);
-  digitalWrite(led1, sensVals[1]);
-  digitalWrite(led2, sensVals[2]);
+
+  for (int i = 0; i < 3; i++) {
+    if (!sensVals[i]) {
+      cakestrip.setPixelColor(i, cakestrip.Color(9, 0, 10));
+    }
+    else {
+      cakestrip.setPixelColor(i, 0);
+    }
+  }
+  cakestrip.show();
+
+  //  digitalWrite(led0, sensVals[0]);
+  //  digitalWrite(led1, sensVals[1]);
+  //  digitalWrite(led2, sensVals[2]);
 
   lastEncoderValue = encoderValue;
 
   if ((millis() - lastTime > rotaryThreshold) && (encoderValue != B0100)) {
     rotaryMotor->setSpeed(RSpeed);
-    
+
     while (encoderValue != B0100) { // until it reaches the 0 degrees marker
       cakeMotor->run(BACKWARD);
 
@@ -230,14 +242,12 @@ void loop() {
     Serial.println("returned to 12");
   }
 
-  if((millis() - lastWalk > cakeThreshold)) {
+  if ((millis() - lastWalk > cakeThreshold)) {
     cakeMotor->setSpeed(0);
   }
-}
 
-lastTime = millis();
-
-{ if (isClockwise) {
+  lastTime = millis();
+  if (isClockwise) {
     cakeMotor->run(FORWARD);
   }
   else {
