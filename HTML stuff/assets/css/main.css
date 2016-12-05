@@ -1,5 +1,5 @@
 @import url(font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,500,700|Cinzel:400,500,800,900");
+@import url("https://fonts.googleapis.com/css?family=Inknut+Antiqua:400,500,700|Cinzel:400,700,900");
 
 /*
 	Future Imperfect by HTML5 UP
@@ -3042,7 +3042,7 @@
 					border-bottom: 0;
 					font-family: "Cinzel", serif;
 					font-size: 0.7em;
-					font-weight: 400;
+					font-weight: 700;
 					letter-spacing: 0.25em;
 					text-transform: uppercase;
 				}
@@ -3347,11 +3347,11 @@
 
 	#footer .copyright {
 		color: #222222;
-		font-family: "Cinzel", serif;
-		font-size: 0.5em;
-		font-weight: 500;
+		font-family: "Inknut Antiqua", serif;
+		font-size: 0.7em;
+		font-weight: 700;
 		letter-spacing: 0.25em;
-		text-transform: uppercase;
+		/*text-transform: uppercase;*/
 	}
 
 	body.single #footer {
