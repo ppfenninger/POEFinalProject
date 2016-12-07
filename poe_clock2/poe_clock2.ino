@@ -9,9 +9,6 @@ Adafruit_DCMotor *myMotor = AFMS.getMotor(1);
 int sensor1Pin = A0; 
 int sensor2Pin = A1; 
 int sensor3Pin = A2;
-int led0 = 13;
-int led1 = 12;
-int led2 = 11;
 int sensor1Value = 0;
 int sensor2Value = 0;
 int sensor3Value = 0;   
@@ -19,6 +16,7 @@ uint8_t baseSpeed = 30;
 boolean isClockwise = true;  
 int sensVals[3] = {0, 0, 0};
 int threshold = 300; 
+
 //int clockwise1[3] = {1, 2, 4};
 //int clockwise2[3] = {2, 4, 1};
 //int clockwise3[3] = {4, 1, 2};
@@ -55,7 +53,6 @@ void loop() {
      sensVals[2] = sensVals[0] + sensVals[1] + sensVals[2] + 1; 
   }}
   
-  Serial.print(sensor1Value); 
   Serial.print(','); 
   Serial.print(sensor2Value); 
   Serial.print(',');
