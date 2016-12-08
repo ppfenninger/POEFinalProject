@@ -20,14 +20,13 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Home</a></h1>
-						<nav class="links">
-							<ul>
-								<li><a href="Process.html">Process</a></li>
+				<header id="header">
+					<nav class="links">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="Process.html">Process</a></li>
 								<li><a href="Subsystems.html">Subsystems</a></li>
 								<li><a href="https://drive.google.com/drive/folders/0Bxm8b-8jEqsVNDdRanZ5Q19Ca2c?usp=sharing" target="_blank">Gallery</a></li>
-								<li><a href="Resources.html">Resources</a></li>
 								<li><a href="About.html">About the Team</a></li>
 							</ul>
 						</nav>
@@ -51,6 +50,24 @@
 							<article class="post">
 								<header>
 									<div class="title">
+										<h2><a href="integration.html">Subsystem Integration</a></h2>
+										<!--<p>Project Overview</p>-->
+									</div>
+									<!--<div class="meta">
+										<time class="published" datetime="2015-11-01">November 1, 2015</time>
+										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
+									</div>-->
+								</header>
+								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+								<p>System block diagram</p>
+								<p>Picture of the stuff going together</p>
+								<p>Explanation of challenges</p>
+							</article>
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
 										<h2><a href="mechanical.html">Mechanical Subsystem</a></h2>
 										<!--<p>Project Overview</p>-->
 									</div>
@@ -60,12 +77,26 @@
 									</div>-->
 								</header>
 								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-								<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-								<footer>
-									<ul class="actions">
-										<li><a href="mechanical.html" class="button big">Continue Reading</a></li>
-									</ul>
-								</footer>
+								<p>Goals/what does the mechanical subsystem do?
+									The mechanical subsystem serves as a physical base for wiring, arduinos, and motors. The actuation of the ‘surprise’ inside the top clock was also designed as part of the mechanical subsystem.
+									Pictures of the mechanical parts
+									Fabrication methods/process
+									Lasercutting/engraving
+									Teeth
+									A strategy that is less pretty
+									Different lasercutters with different tolerances
+									Cut wood parts by hand?
+									Bevel by sanding
+									Lots of Glue
+									Brackets + screws
+									Process/Setbacks/Challenges/How we overcame them
+									Ugliness of teeth
+									Wobbling ::(
+									Motor mounts
+									Heaviness = not spin
+									Mechanical part of solution: lighter faces/lighthouse junk
+								</p>
+
 							</article>
 
 							<!-- Post -->
@@ -81,36 +112,30 @@
 										</div>-->
 									</header>
 									<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-									<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-									<footer>
-										<ul class="actions">
-											<li><a href="electrical.html" class="button big">Continue Reading</a></li>
-										</ul>
-									</footer>
-								</article>
+									<p>Goals/what does the electrical subsystem do?
+										Our electrical subsystem serves to gather data from the environment and user, power the motors and LEDs to provide feedback, and signal between Arduinos to communicate between clock tiers.
+										Circuit diagrams
+										Two resistor breadboard
+										Other electrical stuff too
+										Wire organization strategy, explaining what gets crimped/connectors
+									</p>
+									<p>SECTION (use header 3?) Electrical Components</p>
+									<p>LEDS: why addressable?
+										Motors: why did we use what we did?
+										What interactions we wanted and which sensors we chose for them
+										WALL-Es (IR distance sensors): to figure out if people are walking around the clock
+										Encoder (IR reflectance sensors): only need to work at really close range and discriminate between black and white
+										Surprise trigger (pressure sensor): want physical interaction with user
+										Details of stuff
+										Links to spec sheets included with descriptions--”the one we used was this”
+										Challenges
+										PINS PINS PINS--addressable LEDs
+										Back EMF??
+										Too heavy = no spin
+										Electrical part of solution: beefier motors
+									</p>
 
-								<!-- Post -->
-									<article class="post">
-										<header>
-											<div class="title">
-												<h2><a href="sensors.html">Sensors</a></h2>
-												<!--<p>Project Overview</p>-->
-											</div>
-											<!--<div class="meta">
-												<time class="published" datetime="2015-11-01">November 1, 2015</time>
-												<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-											</div>-->
-										</header>
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<p>- WALL-E cake sensors</p>
-										<p>- rotary encoder</p>
-										<p>- pressure sensor?</p>
-										<footer>
-											<ul class="actions">
-												<li><a href="sensors.html" class="button big">Continue Reading</a></li>
-											</ul>
-										</footer>
-									</article>
+								</article>
 
 								<!-- Post -->
 									<article class="post">
@@ -124,35 +149,22 @@
 												<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
 											</div>-->
 										</header>
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-										<footer>
-											<ul class="actions">
-												<li><a href="software.html" class="button big">Continue Reading</a></li>
-											</ul>
-										</footer>
+										<p>Github link</p>
+										<p>Goals/what does the software subsystem do?</p>
+										<p>Our software system allows us to interpret the sensor data and use it to determine how to control the motors and addressable LEDs using the Adafruit Neopixel library (LINK) and the Adafruit Motorshield library (LINK).</p>
+										<p>Arduino 1 code (bottom clocks):</p>
+											<a href="images/ProgramFlowBotClock.png" class="image featured"><img src="images/ProgramFlowBotClock.png" alt="" /></a>
+
+											<p>No explanatory text necessary ::)</p>
+										<p>Arduino 2 code (top clock):</p>
+										<p>Code diagram</p>
+										<p>Explanation of challenges</p>
+										<p>We didn’t have enough money for a good quadrature encoder, and other solutions like potentiometers (are Gross and) don’t allow for full rotation. A stepper motor wasn’t a viable solution because while the stepper only knows its angular position correctly when not moved by an outside force.</p>
+										<p>Our solution: we made our own cheap rotary encoder out of four [$__] IR reflectance sensors and a printed encoder sheet that we made in MS paint. [ ENCODER IMAGE HERE captioned “Graphic design is my passion, in comic sans] Each 30° section of the encoder differs by one bit from both of the ones next to it (except the 11 and 12 positions), and the reflectance sensors each read a different bit from outside (0001) to inside (1000).</p>
+										</p>
 									</article>
 
-									<!-- Post -->
-										<article class="post">
-											<header>
-												<div class="title">
-													<h2><a href="integration.html">Subsystem Integration</a></h2>
-													<!--<p>Project Overview</p>-->
-												</div>
-												<!--<div class="meta">
-													<time class="published" datetime="2015-11-01">November 1, 2015</time>
-													<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
-												</div>-->
-											</header>
-											<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-											<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla. Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-											<footer>
-												<ul class="actions">
-													<li><a href="integration.html" class="button big">Continue Reading</a></li>
-												</ul>
-											</footer>
-										</article>
+
 
 									<!-- Footer -->
 										<section id="footer">
@@ -179,6 +191,15 @@
 									<li>
 										<article>
 											<header>
+												<h3><a href="integration.html">Subsystem Integration</a></h3>
+											</header>
+											<a href="integration.html" class="image"><img src="images/pic11.jpg" alt="" /></a>
+										</article>
+									</li>
+
+									<li>
+										<article>
+											<header>
 												<h3><a href="mechanical.html">Mechanical Subsystem</a></h3>
 											</header>
 											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
@@ -197,31 +218,11 @@
 									<li>
 										<article>
 											<header>
-												<h3><a href="sensors.html">Sensors</a></h3>
-											</header>
-											<a href="sensors.html" class="image"><img src="images/pic10.jpg" alt="" /></a>
-										</article>
-									</li>
-
-									<li>
-										<article>
-											<header>
 												<h3><a href="software.html">Software Subsystem</a></h3>
 											</header>
 											<a href="software.html" class="image"><img src="images/pic10.jpg" alt="" /></a>
 										</article>
 									</li>
-
-									<li>
-										<article>
-											<header>
-												<h3><a href="integration.html">Subsystem Integration</a></h3>
-											</header>
-											<a href="integration.html" class="image"><img src="images/pic11.jpg" alt="" /></a>
-										</article>
-									</li>
-
-
 
 					</section>
 
