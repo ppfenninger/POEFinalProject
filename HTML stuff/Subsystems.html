@@ -47,7 +47,7 @@
 					<div id="main">
 
 						<!-- Post -->
-							<article class="post">
+							<article class="post" id="integration">
 								<header>
 									<div class="title">
 										<h2><a href="integration.html">Subsystem Integration</a></h2>
@@ -72,7 +72,7 @@
 							</article>
 
 						<!-- Post -->
-							<article class="post">
+							<article class="post" id="mechanical">
 								<header>
 									<div class="title">
 										<h2><a href="mechanical.html">Mechanical Subsystem</a></h2>
@@ -83,9 +83,9 @@
 										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
 									</div>-->
 								</header>
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 								<p>The mechanical subsystem serves as a physical base for wiring, arduinos, and motors. The actuation of the 'surprise' inside the top clock was also designed as part of the mechanical subsystem.</p>
 								<p>Pictures of the mechanical parts</p>
+								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 									<p><b>Fabrication methods:</b></p>
 									<p>We designed the parts to be planar so that they could be laser cut, which meant that we used many flat faces in our design rather than curves. Since we were already using the laser cutter, we embellished the clock using laser engraving. In our initial iterations we cut teeth into the edges of each face so that they could interlock, which made more contact points, but we opted against that because we preferred the look of the pieces without the teeth.</p>
 
@@ -99,7 +99,7 @@
 							</article>
 
 							<!-- Post -->
-								<article class="post">
+								<article class="post" id="electrical">
 									<header>
 										<div class="title">
 											<h2><a href="electrical.html">Electrical Subsystem</a></h2>
@@ -118,39 +118,27 @@
 									<a href="images/motorCircuit_schem.svg" class="image featured"><img src="images/motorCircuit_schem.svg" alt="" style="height:500px"/></a>
 									<p>Here's a circuit diagram showing how our motors are connected to the motor shield. There are two sets of five slots for motors, and each stepper motor takes up all five of them.</p>
 
+									<p>We did a lot of WEIRD stuff with connectors. Sometimes we had to solder two wires together with a resistor and then add heat-shrink wrapping over them to make sure they didn't fall apart. Sometimes we had to crimp wires and stick them in connectors and then heat-shrink the connectors. It was a mess. In the end we mostly soldered our wires to protoboards to keep them from getting messy. Thank goodness for protoboards!</p>
+
 									<p><b>Electrical Components:</b></p>
 									<p>LEDS: We used addressable LEDs for the lights to indicate whether the IR distance sensor is triggered and to light up the images of the animals. This was because if each LED required a separate pin on the Arduino, we would not have enough pins. We decided against having something in hardware to encode the signals to each pin and instead used addressable LEDs which had that function built in.</p>
-
-									<p>MOTORS: We started out using DC motors with lower torque but switched to higher-torque stepper motors because of the friction and weight of the rotating pieces. </p>
-
-									<p>DISTANCE SENSORS: First, we wanted to encourage people to imitate the motion of a clock, so we wanted to tell if they were were moving around the clock. We used 3 IR distance sensors and recorded the order they were triggered to find out if people were actually ambulating around the clock.</p>
-
-									<p>REFLECTANCE SENSORS: </p>
+									<p><a href="https://www.adafruit.com/product/858">MOTORS:</a> We started out using DC motors with lower torque but switched to higher-torque stepper motors because of the friction and weight of the rotating pieces. </p>
+									<p><a href="https://www.pololu.com/file/0J156/gp2y0a02yk_e.pdf">DISTANCE SENSORS:</a> First, we wanted to encourage people to imitate the motion of a clock, so we wanted to tell if they were were moving around the clock. We used 3 IR distance sensors and recorded the order they were triggered to find out if people were actually ambulating around the clock.</p>
+									<p><a href="http://www.vishay.com/docs/83760/tcrt5000.pdf">REFLECTANCE SENSORS:</a> When choosing sensors for the encoder, we basically just needed some that would work at really close range and could discriminate between something black and something white at a few millimeters. And we had a bunch just lying around in the stockroom, so we used those!</p>
+									<p>SURPRISE TRIGGER: We really wanted a physical interaction our users could carry out, so we decided on a pressure sensor. We decided to use velostat, an electrically conductive material whose resistance changes with pressure--ie, it changes when stepped on.</p>
 
 									<p>Two resistor breadboard
 										Other electrical stuff too
 										Wire organization strategy, explaining what gets crimped/connectors
 									</p>
-									<p>SECTION (use header 3?) Electrical Components</p>
-									<p>LEDS: why addressable?
-										Motors: why did we use what we did?
-										What interactions we wanted and which sensors we chose for them
-										WALL-Es (IR distance sensors): to figure out if people are walking around the clock
-										Encoder (IR reflectance sensors): only need to work at really close range and discriminate between black and white
-										Surprise trigger (pressure sensor): want physical interaction with user
-										Details of stuff
-										Links to spec sheets included with descriptions--”the one we used was this”
-										Challenges
-										PINS PINS PINS--addressable LEDs
-										Back EMF??
-										Too heavy = no spin
-										Electrical part of solution: beefier motors
-									</p>
+									<p><b>Challenges:</b></p>
+									<p>One of our biggest challenges early on was trying to find enough pins for all the electrical components we wanted to use. We needed analogue pins for three distance sensors and four reflectance sensors (we had 6 total) and digital pins for 18 LEDs (we had 14 total)! Clearly we wouldn't be able to do it all on one Arduino--OR WOULD WE? We solved our problems neatly by using addressable LEDs, which only take one pin per string, and putting our reflectance sensors in digital pins after making sure their threshold read as HIGH when they saw something black. This meant we only needed 3 analogue pins and 6 digital pins, leaving us pins to spare!</p>
+									<p>We were also advised that if users were going to be spinning a stationary motor we would have problems with back EMF that might permanently damage the motor. So we added a flyback diode to prevent back EMF. Turns out it completely prevented our motor from working at all... so we just ditched it. The motor hasn't broken yet, so maybe it wasn't too important!</p>
 
 								</article>
 
 								<!-- Post -->
-									<article class="post">
+									<article class="post" id="software">
 										<header>
 											<div class="title">
 												<h2><a href="software.html">Software Subsystem</a></h2>
@@ -167,7 +155,7 @@
 											<a href="images/ProgramFlowBotClock.png" class="image featured"><img src="images/ProgramFlowBotClock.png" alt="" /></a>
 
 										<p>Arduino 2 code (top clock):</p>
-										<p>Code diagram</p>
+										<a href="images/ProgramFlowTopClock.png" class="image featured"><img src="images/ProgramFlowTopClock.png" alt="" style="width:700px" /></a>
 
 										<p><b>Challenges:</b></p>
 										<p>We didn’t have enough money for a good quadrature encoder, and other solutions like potentiometers (are Gross and) don’t allow for full rotation. A stepper motor wasn’t a viable solution because while the stepper only knows its angular position correctly when not moved by an outside force.</p>
@@ -202,43 +190,33 @@
 
 
 						<!-- Posts List; I would like to have these link to #location of post on this page -->
-							<section>
-								<ul class="posts">
-									<li>
-										<article>
-											<header>
-												<h3><a href="integration.html">Subsystem Integration</a></h3>
-											</header>
-											<a href="integration.html" class="image"><img src="images/pic11.jpg" alt="" /></a>
-										</article>
-									</li>
+						<!-- Mini Post -->
+							<article class="mini-post">
+								<header>
+									<h2><a href="#integration">Subsystem Integration</a></h2>
+								</header>
+							</article>
 
-									<li>
-										<article>
-											<header>
-												<h3><a href="mechanical.html">Mechanical Subsystem</a></h3>
-											</header>
-											<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-										</article>
-									</li>
+						<!-- Mini Post -->
+							<article class="mini-post">
+								<header>
+									<h2><a href="#mechanical">Mechanical Subsystem</a></h2>
+								</header>
+							</article>
 
-									<li>
-										<article>
-											<header>
-												<h3><a href="electrical.html">Electrical Subsystem</a></h3>
-											</header>
-											<a href="electrical" class="image"><img src="images/pic09.jpg" alt="" /></a>
-										</article>
-									</li>
+						<!-- Mini Post -->
+							<article class="mini-post">
+								<header>
+									<h2><a href="#electrical">Electrical Subsystem</a></h2>
+								</header>
+							</article>
 
-									<li>
-										<article>
-											<header>
-												<h3><a href="software.html">Software Subsystem</a></h3>
-											</header>
-											<a href="software.html" class="image"><img src="images/pic10.jpg" alt="" /></a>
-										</article>
-									</li>
+						<!-- Mini Post -->
+							<article class="mini-post">
+								<header>
+									<h2><a href="#software">Software Subsystem</a></h2>
+								</header>
+							</article>
 
 					</section>
 
