@@ -58,7 +58,7 @@
 										<a href="#" class="author"><span class="name">Jane Doe</span><img src="images/avatar.jpg" alt="" /></a>
 									</div>-->
 								</header>
-								<a href="images/SystemBlock.png" class="image featured"><img src="images/SystemBlock.png" alt="" style="width:600px;height:772px" /></a>
+								<a href="images/SystemBlock.png" class="image featured"><img src="images/SystemBlock.png" alt="" style="width:600px" /></a>
 								<p>System block diagram showing how the components go together. </p>
 
 								<p>Picture of the stuff going together</p>
@@ -85,15 +85,15 @@
 								</header>
 								<p>The mechanical subsystem serves as a physical base for wiring, arduinos, and motors. The actuation of the 'surprise' inside the top clock was also designed as part of the mechanical subsystem.</p>
 								<p>Pictures of the mechanical parts</p>
-								<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+								<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
 									<p><b>Fabrication methods:</b></p>
 									<p>We designed the parts to be planar so that they could be laser cut, which meant that we used many flat faces in our design rather than curves. Since we were already using the laser cutter, we embellished the clock using laser engraving. In our initial iterations we cut teeth into the edges of each face so that they could interlock, which made more contact points, but we opted against that because we preferred the look of the pieces without the teeth.</p>
 
-									<p>We used the Trotec laser cutter instead of the Helix for the final pieces because it was more accurate and left less pronounced burn marks. With a laser cutter like the Helix, we would have had to spend more time sanding to clean the pieces up.</p>
+									<p>When laser cutting the final pieces, we used the Trotec laser cutter instead of the Helix because it was more accurate and left less pronounced burn marks. With a laser cutter like the Helix, we would have had to spend more time sanding to clean the pieces up.</p>
 
-									<p>We cut the wood for the table, dowels, and support blocks by hand. In order to connect the faces, we beveled the edges by sanding them. We measured the angle we wanted and made triangular pieces of wood that was cut at that angle and used it as a jig to sand the pieces down. We found that it was challenging to sand at an even angle across long pieces, so it was important to run the piece across the sander. It's important to check the bevel periodically to make sure the angle is correct and none of the length of the piece has been sanded off.</p>
+									<p>Some parts did not require the level of accuracy of a laser cutter or were much thicker than the wood we were laser cutting. We cut the wood for the table, dowels, and support blocks by hand. In order to connect the faces, we beveled the edges by sanding them. We measured the angle we wanted and made triangular pieces of wood that was cut at that angle and used it as a jig to sand the pieces down. We found that it was challenging to sand at an even angle across long pieces, so it was important to run the piece across the sander. It was important to check the bevel periodically to make sure the angle is correct and none of the length of the piece has been sanded off.</p>
 
-									<p> We primarily attached the faces to each other with glue. We also used screws, hinges, and brackets when appropriate.</p>
+									<p> When assembling the laser cut and manually fabricated parts, we used a few different strategies. We primarily attached the pieces that needed a lot of structural stability with wood glue, and if we needed to work with it quickly we used a little hot glue to keep the parts in place while the wood glue was drying. We used hot glue for other parts that we anticipated needing to alter or parts that were not as structural. We also used brackets and hinges with screws for reinforcement and to make doors to access the inside of the pieces.</p>
 									<p><b>Challenges:</b></p>
 									<p>Because we have rotating parts, we had issues getting them not to wobble. Centering the pieces exactly reduced this problem and creating more stable surfaces were both ways we addressed this problem. To create a more stable surface for rotation for the outer drum of cake clock, we made a table for the motor mount that has more surface area that contacts the outer drum but has low friction because we used slippery surfaces (electrical tape and smooth hardboard). </p>
 							</article>
@@ -151,11 +151,8 @@
 										</header>
 										<p><a href="https://github.com/ppfenninger/POEFinalProject">Link to our Github</a></p>
 										<p>Our software system allows us to interpret the sensor data and use it to determine how to control the motors and addressable LEDs using the Adafruit Neopixel library (LINK) and the Adafruit Motorshield library (LINK).</p>
-										<p>Arduino 1 code (bottom clocks):</p>
+										<p>Arduino code:</p>
 											<a href="images/ProgramFlowBotClock.png" class="image featured"><img src="images/ProgramFlowBotClock.png" alt="" /></a>
-
-										<p>Arduino 2 code (top clock):</p>
-										<a href="images/ProgramFlowTopClock.png" class="image featured"><img src="images/ProgramFlowTopClock.png" alt="" style="width:700px" /></a>
 
 										<p><b>Challenges:</b></p>
 										<p>We didn’t have enough money for a good quadrature encoder, and other solutions like potentiometers (are Gross and) don’t allow for full rotation. A stepper motor wasn’t a viable solution because while the stepper only knows its angular position correctly when not moved by an outside force.</p>
