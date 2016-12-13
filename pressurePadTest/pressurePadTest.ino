@@ -1,4 +1,4 @@
-int analogInPin = A5; 
+int analogInPin = A3; 
 int sensorValue = 0; 
 
 void setup() {

@@ -1,15 +1,12 @@
 #include <Wire.h>
-#include <Adafruit_MotorShield.h>
-#include "utility/Adafruit_MS_PWMServoDriver.h"
-Adafruit_MotorShield AFMS = Adafruit_MotorShield();
-
-Adafruit_DCMotor *rotaryMotor = AFMS.getMotor(2);
-
+// 3 = 1101 (11)
+// 6 = 0010(2)
+// 9 = 1101 (6)
 // pins the sensors are on. Note that these are DIGITAL so we need to set up a threshold.
-const int enc1Pin = 13;
-const int enc2Pin = 12;
-const int enc3Pin = 11;
-const int enc4Pin = 10;
+const int enc1Pin = 10;
+const int enc2Pin = 9;
+const int enc3Pin = 8;
+const int enc4Pin = 7;
 
 // sensor values. enc1 is far outer edge, enc4 is inner edge.
 int enc1 = 0;
@@ -30,10 +27,6 @@ uint8_t baseRotarySpeed = 0;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  rotaryMotor->setSpeed(baseRotarySpeed);
-  rotaryMotor->run(FORWARD);
-  rotaryMotor->run(RELEASE); 
-
 }
 
 void loop() {
@@ -83,6 +76,11 @@ void loop() {
       clockNumber = 11;
       break;
   }
+  Serial.print(enc1);
+  Serial.print(enc2);
+  Serial.print(enc3);
+  Serial.print(enc1);
+  Serial.print("    "); 
   Serial.println(clockNumber); 
   
 }
